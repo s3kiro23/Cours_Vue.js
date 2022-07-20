@@ -1,15 +1,12 @@
 <script setup>
-import Case from "./components/Case.vue";
 import Message from "./components/Message.vue";
+import Row from "./components/Row.vue";
 </script>
 
 <template>
   <main>
     <div class="caseContainer">
-      <Case></Case>
-      <Case></Case>
-      <Case></Case>
-      <Case></Case>
+      <Row></Row>
       <button id="btn">Valider</button>
     </div>
     <Message></Message>

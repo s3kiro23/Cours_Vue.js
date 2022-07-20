@@ -1,18 +1,38 @@
 <template>
-    <div :style="{'background-color': color}" :class="{'shadow': isShadow}" class="case"></div>
-
+  <div @click="changeColor"
+       :style="{'background-color': mock.colors[index]}"
+       :class="{'shadow': isShadow}"
+       class="case">
+  </div>
 </template>
 
 <script>
+
+import mock from "../assets/mock";
+
 export default {
   name: "Case",
   data() {
     return {
-      color: "blue",
+      mock,
       isShadow: true,
+      index: 0,
     }
-  }
-}
+  },
+  methods:
+      {
+        changeColor() {
+
+          this.index++;
+
+          if (this.index >= mock.colors.length) {
+            this.index = 0;
+          }
+          this.color = mock.colors[this.index]
+
+        }
+      }
+};
 </script>
 
 <style scoped>
