@@ -12,24 +12,21 @@ import mock from "../assets/mock";
 
 export default {
   name: "Case",
+  props: ["id", "index"],
   data() {
     return {
       mock,
       isShadow: true,
-      index: 0,
     }
   },
   methods:
       {
         changeColor() {
-
-          this.index++;
-
-          if (this.index >= mock.colors.length) {
-            this.index = 0;
-          }
-          this.color = mock.colors[this.index]
-
+          /*          this.index++;
+                    if (this.index >= mock.colors.length) {
+                      this.index = 0;
+                    }*/
+          this.$emit("changeColor", this.id);
         }
       }
 };
