@@ -1,34 +1,44 @@
-<script>
-import Message from "./components/Message.vue";
-import Row from "./components/Row.vue";
-export default {
-  name: "App",
-  components: {Row, Message},
-  data () {
-    return {
-      responses: [1,1,1,1],
-      currentRow: [0,0,0,0]
-    }
-  },
-  methods:
-  {
-    checkRow()
-    {
-      alert('plop');
-    },
-  }
-}
-</script>
-
 <template>
   <main class="main">
     <div class="caseContainer">
-      <Row :indexes="currentRow"></Row>
-      <button @click="checkRow" id="btn">Valider</button>
+      <Row :indexes="currentRow" @clickCase="colorChanged"></Row>
+      <button @click="checkRow" class="btn">Valider</button>
     </div>
     <Message></Message>
   </main>
 </template>
+
+<script>
+import Message from "./components/Message.vue";
+import Row from "./components/Row.vue";
+import mock from "./assets/mock";
+
+export default {
+  name: "App",
+  components: {Row, Message},
+  data() {
+    return {
+      mock,
+      responses: [1, 1, 1, 1],
+      currentRow: [1, 0, 3, 0],
+    };
+  },
+  methods: {
+    checkRow() {
+      alert("plop");
+    },
+
+    colorChanged(id){
+      let color = this.currentRow[id];
+      color++;
+      if (this.index >= mock.colors.length) {
+        color = 0;
+      }
+      this.currentRow[id] = color;
+    }
+  }
+}
+</script>
 
 <style scoped>
 
@@ -40,7 +50,7 @@ export default {
 
 }
 
-#btn {
+.btn {
 
   width: 5rem;
   cursor: pointer;

@@ -1,13 +1,19 @@
 <template>
-  <span>{{ msg }}</span>
+  <div>
+    {{ msg }}
+  </div>
+  <input type="text" v-model="msg">
+  <div>
+    <img :src="msg" alt="pic">
+  </div>
 </template>
 
 <script>
 export default {
   name: "Message",
-  data (){
-    return{
-      msg: "Mastermind",
+  data() {
+    return {
+      msg: "https://picsum.photos/200",
     }
   }
 }
@@ -15,7 +21,7 @@ export default {
 
 <style scoped>
 
-span{
+span {
 
   color: white;
 

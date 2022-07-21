@@ -1,12 +1,14 @@
 <template>
-  <Case v-for="i in indexes.length"
-        :key="i"
-        :id="i"
-        :index="indexes[i]"
-        @changeColor="colorChanged"
+  <Case
+      v-for="(i) in indexes.length"
+      :key="i-1"
+      :id="i-1"
+      :index="indexes[i-1]"
+      @changeColor="colorChanged"
   >
   </Case>
 </template>
+
 <script>
 
 import Case from "./Case.vue"
@@ -16,9 +18,9 @@ export default {
   props: ["indexes"],
   components: {Case},
   methods: {
-    colorChanged(id){
-      alert(this.id)
-      /*this.$emit("clickCase", this.id)*/
+    colorChanged(caseID) {
+      //alert(caseID);
+      this.$emit("clickCase", caseID)
     }
   }
 }
